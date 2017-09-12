@@ -16,101 +16,104 @@ void yourChange(int change) {
 	int nickle = change / 5;
 	change %= 5;
 
-	
-		cout << "Your change is:" << endl;
-		if (dollar > 0) {
-			cout << dollar  << " Dollar(s)" << endl;
-		}
-		if (quarter > 0) {
-			cout << quarter << " Quarter(s)" << endl;
-		}
-		if (dime > 0) {
-			cout << dime << " Dime(s)" << endl;
-		}
-		if (nickle > 0) {
-			cout << nickle << " Nickle(s)" << endl;
-		}
-	
+
+	cout << "Your change is:" << endl;
+	if (dollar > 0) {
+		cout << dollar << " Dollar(s)" << endl;
+	}
+	if (quarter > 0) {
+		cout << quarter << " Quarter(s)" << endl;
+	}
+	if (dime > 0) {
+		cout << dime << " Dime(s)" << endl;
+	}
+	if (nickle > 0) {
+		cout << nickle << " Nickle(s)" << endl;
+	}
+
 
 
 }
 
 int main() {
-	float cost = 0;
-	float credit = 0;
+	float cost = 1;
+	float credit = 1;
 	float low;
 	float additional;
-	char option = 'Y';
 
+
+
+while (true) {
+	if (cost == 0) {
+		cout << "Thank you for your purchase" << endl;
+		return false;
+	}
+
+
+	cout << "Enter the price of your snack" << endl;
+	cout << "$ ";
+	cin >> cost;
+
+
+START:if (cost == 0) {
+	cout << "Thank you for Your Purchase" << endl;
+	break;
+}
+	cout << "Please type how much money you would like to add" << endl;
+	cout << "$ ";
+	cin >> credit;
+	
 	
 
-	START: while (true) {
-		if (option == 'n' || option == 'N') {
-			cout << "Thank you for your purchase" << endl;
-			return false;
-		}
-		
-
-		cout << "Enter the price of your snack" << endl;
-		cout << "$ ";
-		cin >> cost;
 
 
-		cout << "Please type how much money you would like to add" << endl;
-		cout << "$ ";
-		cin >> credit;
+	while (true) {
 
 
+		low = cost - credit;
 
-		
-		while (true) {
-			
+		if (cost <= credit)
+		{
+			cout << "Thank you. Your snack is now vending" << endl;
 
-			low = cost - credit;
-
-			if (cost <= credit)
-			{
-				cout << "Thank you. Your snack is now vending" << endl;
-
-				cout << endl;
-				if (cost == credit) {
-					cout << "No Change" << endl;
-				}
-				else {
+			cout << endl;
+			if (cost == credit) {
+				cout << "No Change" << endl;
+			}
+			else {
 				yourChange((credit - cost) * 100);
 			}
 
-				cout << endl;
+			cout << endl;
 
-				cout << "Would you like to purchance an additional snack?" << endl;
-				cout << "Type Y for Yes, Type N for No" << endl;
-				
-				cin >> option;
+			cout << "Would you like to purchance an additional snack?" << endl;
+			cout << "Enter the price of the next snack or 0 to Exit" << endl;
 
-				goto START;
+			cin >> cost;
 
+			goto START;
 
-			}
-
-
-
-			else {
-
-
-				cout << "You do not have sufficient change. You need $ " << low << " more" << endl;
-				cout << "Please type how much additional money you would like to add" << endl;
-				cin >> additional;
-				credit = credit + additional;
-
-			}
 
 		}
-			   
-	}
-	
-	
-	
 
-    return 0;
+
+
+		else {
+
+
+			cout << "You do not have sufficient change. You need $ " << low << " more" << endl;
+			cout << "Please type how much additional money you would like to add" << endl;
+			cin >> additional;
+			credit = credit + additional;
+
+		}
+
+	}
+
 }
 
+
+
+
+	   return 0;
+}
